@@ -9,6 +9,8 @@ Currently it supports these git hosts:
 - Gitlab
 
 ## Installation
+
+### lazy.nvim
 Add this in a `gitlink.lua` file and then include it in your `plugins.init.lua`.
 
 ```lua
