@@ -9,20 +9,16 @@ end
 
 function M.parse(remote)
   if not remote then return nil end
-
   remote = normalize(remote)
-
   local host, path = remote:match("^https?://([^/]+)/(.+)$")
   if not host then return nil end
 
-  -- Bitbucket Server quirk
   path = path:gsub("^scm/", "")
 
   local parts = {}
   for p in path:gmatch("[^/]+") do
     table.insert(parts, p)
   end
-
   if #parts < 2 then return nil end
 
   local repo = table.remove(parts)
@@ -36,7 +32,7 @@ function M.parse(remote)
   elseif host:match("bitbucket%.org") then
     provider = "bitbucket"
   else
-    provider = "" -- check later
+    provider = "bitbucket_server"
   end
 
   return {
