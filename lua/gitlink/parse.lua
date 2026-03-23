@@ -32,7 +32,7 @@ function M.parse(remote)
   elseif host:match("bitbucket%.org") then
     provider = "bitbucket"
   else
-    provider = "bitbucket_server"
+    provider = "bitbucket"
   end
 
   return {
